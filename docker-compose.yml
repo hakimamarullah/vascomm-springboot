@@ -1,0 +1,17 @@
+services:
+  mysql:
+    image: mysql:8.0
+    restart: unless-stopped
+    networks:
+      - vascomm-mysql-network
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: vascomm
+      MYSQL_USER: vascomm
+      MYSQL_PASSWORD: vascomm
+    ports:
+      - "3309:3306"
+
+networks:
+  vascomm-mysql-network:
+    driver: bridge

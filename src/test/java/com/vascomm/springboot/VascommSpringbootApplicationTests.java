@@ -1,4 +1,4 @@
-package com.vascomm.vascomm.springboot;
+package com.vascomm.springboot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
