@@ -26,6 +26,7 @@ public class Product {
     private String name;
     private String description;
     private Integer stock;
+    private Double price;
 
     @Column(name = "is_deleted")
     private Boolean isDeleted = false;

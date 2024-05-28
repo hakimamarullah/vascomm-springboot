@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS products (
     name VARCHAR(500) NOT NULL UNIQUE,
     description text,
     stock INTEGER default 0,
+    price decimal default 0.0,
     is_deleted boolean DEFAULT FALSE,
     created_at timestamp default current_timestamp,
     updated_at timestamp default current_timestamp on update current_timestamp

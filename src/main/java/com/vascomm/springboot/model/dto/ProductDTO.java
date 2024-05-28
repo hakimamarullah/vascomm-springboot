@@ -28,6 +28,9 @@ public class ProductDTO {
     @Min(value = 0)
     private Integer stock;
 
+    @Min(value = 0)
+    private Double price;
+
     @NotNull
     private Boolean isDeleted;
 
