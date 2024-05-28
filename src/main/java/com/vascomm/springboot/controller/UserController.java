@@ -14,6 +14,7 @@ import com.vascomm.springboot.model.dto.PagedResponse;
 import com.vascomm.springboot.model.dto.RegisterDTO;
 import com.vascomm.springboot.model.response.ApiResponse;
 import com.vascomm.springboot.service.UserService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 import org.springdoc.core.annotations.ParameterObject;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/user")
 @RolesAllowed({RoleType.ADMIN})
+@SecurityRequirement(name = "Bearer Authentication")
 public class UserController {
 
     private final UserService userService;

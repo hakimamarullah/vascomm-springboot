@@ -13,6 +13,7 @@ import com.vascomm.springboot.model.dto.PagedResponse;
 import com.vascomm.springboot.model.dto.ProductDTO;
 import com.vascomm.springboot.model.response.ApiResponse;
 import com.vascomm.springboot.service.ProductService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.validation.Valid;
 import org.springdoc.core.annotations.ParameterObject;
@@ -56,6 +57,7 @@ public class ProductController {
 
     @DeleteMapping("/{id}")
     @RolesAllowed({RoleType.ADMIN})
+    @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<ApiResponse<Void>> deleteProductById(@PathVariable Integer id) {
         var response = productService.deleteProductById(id);
         return new ResponseEntity<>(response, HttpStatusCode.valueOf(response.getCode()));
@@ -63,6 +65,7 @@ public class ProductController {
 
     @PutMapping("")
     @RolesAllowed({RoleType.ADMIN})
+    @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<ApiResponse<Void>> updateProductById(@RequestBody @Valid ProductDTO productDTO) {
         var response = productService.updateProductById(productDTO);
         return new ResponseEntity<>(response, HttpStatusCode.valueOf(response.getCode()));
@@ -70,6 +73,7 @@ public class ProductController {
 
     @PostMapping("/batch-insert")
     @RolesAllowed({RoleType.ADMIN})
+    @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<ApiResponse<Integer>> saveBatch(@RequestBody @Valid List<ProductDTO> productDTOs) {
         var response = productService.saveBatch(productDTOs);
         return new ResponseEntity<>(response, HttpStatusCode.valueOf(response.getCode()));
@@ -77,6 +81,7 @@ public class ProductController {
 
     @PostMapping("/single-insert")
     @RolesAllowed({RoleType.ADMIN})
+    @SecurityRequirement(name = "Bearer Authentication")
     public ResponseEntity<ApiResponse<Void>> save(@RequestBody @Valid ProductDTO productDTO) {
         var response = productService.save(productDTO);
         return new ResponseEntity<>(response, HttpStatusCode.valueOf(response.getCode()));
