@@ -27,7 +27,7 @@ This project demonstrates how to run a Spring Boot application with MySQL using 
    docker-compose up --build -d
    ```
 
-4. Run application:
+4. Run application (skip this step if the container already running from previous step):
 
    ```sh
    ./mvnw spring-boot:run

@@ -10,8 +10,24 @@ services:
       MYSQL_USER: vascomm
       MYSQL_PASSWORD: vascomm
     ports:
-      - "3309:3306"
+      - "3306:3306"
 
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: on-failure
+    networks:
+      - vascomm-mysql-network
+    depends_on:
+      - mysql
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/vascomm?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: vascomm
+      SPRING_DATASOURCE_PASSWORD: vascomm
+      SPRING_FLYWAY_URL: jdbc:mysql://mysql:3306/vascomm?useSSL=false&allowPublicKeyRetrieval=true
 networks:
   vascomm-mysql-network:
     driver: bridge
